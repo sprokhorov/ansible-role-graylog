@@ -1,0 +1,42 @@
+---
+
+
+# - name: edit defaults
+#   lineinfile:
+#     line: "{{ item }}"
+#     dest: /etc/default/elasticsearch
+#   register: defaults
+#   with_items:
+#     - "ES_JAVA_OPTS=\"{{ es_java_opts }}\""
+
+
+- name: edit server.conf
+  template:
+    backup: yes
+    src: server.conf.j2
+    dest: /etc/graylog/server/server.conf
+  register: config
+
+
+- name: create journal directory
+  file:
+    dest: /var/lib/graylog-server/journal
+    state: directory
+    owner: graylog
+    group: graylog
+
+    
+- name: restart server.conf
+  service:
+    name: graylog-server
+    state: restarted
+    enabled: yes
+  when: defaults.changed or config.changed
+
+
+- name: start graylog-server
+  service:
+    name: graylog-server
+    state: started
+    enabled: yes
+  # when: not defaults.changed or not config.changed

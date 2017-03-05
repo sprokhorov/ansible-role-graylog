@@ -1,0 +1,44 @@
+---
+
+
+- name: install required packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - openjdk-8-jre-headless
+    - uuid-runtime
+    - pwgen
+    - mongodb-server
+  when: ansible_os_family == "Debian"
+
+
+- name: add repository
+  apt:
+    deb: https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.deb
+  register: repository
+  when: ansible_os_family == "Debian"
+
+
+- name: apt update
+  apt:
+    update_cache: yes
+  when: repository.changed and ansible_os_family == "Debian"
+
+
+- name: install graylog-server
+  apt:
+    name: graylog-server
+    state: present
+  when: ansible_os_family == "Debian"
+
+
+# - name: start graylog and mongodb
+#   service:
+#     name: "{{ item }}"
+#     state: started
+#     enabled: yes
+#   with_items:
+#     - graylog-server
+#     - mongodb
