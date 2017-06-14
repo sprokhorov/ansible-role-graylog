@@ -22,6 +22,13 @@
   register: config
 
 
+- name: edit graylog-server default
+  template:
+    src: graylog-server.j2
+    dest: /etc/sysconfig/graylog-server
+  register: default
+
+
 - name: create journal directory
   file:
     dest: /var/lib/graylog-server/journal
@@ -35,7 +42,7 @@
     name: graylog-server
     state: restarted
     enabled: yes
-  when: config.changed
+  when: config.changed or default.changed
 
 
 - name: start graylog-server

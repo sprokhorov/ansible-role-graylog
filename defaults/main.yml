@@ -13,6 +13,9 @@ graylog_redhat_packages:
   - pwgen
   - graylog-server
 
+graylog_heap_size: 1g
+graylog_server_args: ""
+
 # Config
 password_secret: ""
 root_password_sha2: ""
