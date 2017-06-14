@@ -1,0 +1,19 @@
+---
+
+
+galaxy_info:
+  author: sprokhorov
+  description: Role to install and configure graylog server
+  company: Mail.ru Group
+  license: All components of this product are Copyright (c) 2016 New Relic, Inc.  All rights reserved.
+  min_ansible_version: 2.0
+  platforms:
+  - name: EL
+    versions:
+      - 7
+  - name: Ubuntu
+    versions:
+      - xenial
+
+dependencies:
+  - role: jpnewman.elasticsearch
