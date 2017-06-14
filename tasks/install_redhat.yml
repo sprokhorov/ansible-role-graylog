@@ -1,0 +1,26 @@
+---
+
+
+- name: add epel repository
+  yum:
+    name: epel-release
+    state: installed
+
+
+- name: add mongodb repository
+  template:
+    src: mongodb-org-3.2.repo.j2
+    dest: /etc/yum.repos.d/mongodb-org-3.2.repo
+
+
+- name: add graylog repository
+  yum:
+    name: https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.rpm
+    state: present
+
+
+- name: install required packages
+  yum:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ graylog_redhat_packages }}"

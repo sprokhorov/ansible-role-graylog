@@ -1,0 +1,28 @@
+---
+
+
+- name: install required packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ graylog_debian_packages }}"
+
+
+- name: add apt repository
+  apt:
+    deb: https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.deb
+  register: repository
+
+
+- name: apt update
+  apt:
+    update_cache: yes
+  when: repository.changed and ansible_os_family == "Debian"
+
+
+- name: install graylog-server
+  apt:
+    name: graylog-server
+    state: present
+
+

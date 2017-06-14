@@ -1,13 +1,17 @@
 ---
 
 
-# - name: edit defaults
-#   lineinfile:
-#     line: "{{ item }}"
-#     dest: /etc/default/elasticsearch
-#   register: defaults
-#   with_items:
-#     - "ES_JAVA_OPTS=\"{{ es_java_opts }}\""
+- name: check required vars
+  fail:
+    msg: "password_secret or/and root_password_sha2 is not defined"
+  when: not password_secret and not root_password_sha2
+
+
+- name: start mongod
+  service:
+    name: mongod
+    state: started
+    enabled: yes
 
 
 - name: edit server.conf
@@ -25,8 +29,8 @@
     owner: graylog
     group: graylog
 
-    
-- name: restart server.conf
+   
+- name: restart graylog server
   service:
     name: graylog-server
     state: restarted
@@ -39,4 +43,3 @@
     name: graylog-server
     state: started
     enabled: yes
-  # when: not defaults.changed or not config.changed

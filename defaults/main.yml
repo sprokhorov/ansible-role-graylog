@@ -1,3 +1,21 @@
+# Settings
+
+graylog_debian_packages:
+  - apt-transport-https
+  - openjdk-8-jre-headless
+  - uuid-runtime
+  - pwgen
+  - mongodb-server
+
+graylog_redhat_packages:
+  - java-1.8.0-openjdk-headless
+  - mongodb-org
+  - pwgen
+  - graylog-server
+
+# Config
+password_secret: ""
+root_password_sha2: ""
 is_master: true
 node_id_file: /etc/graylog/server/node-id
 root_username:
