@@ -4,7 +4,7 @@
 - name: check required vars
   fail:
     msg: "password_secret or/and root_password_sha2 is not defined"
-  when: not password_secret and not root_password_sha2
+  when: not graylog_password_secret and not graylog_root_password_sha2
 
 
 - name: start mongod
