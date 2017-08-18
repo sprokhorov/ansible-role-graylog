@@ -25,7 +25,7 @@
 # * The property value is generally terminated by the end of the line. White space following the
 #   property value is not ignored, and is treated as part of the property value.
 #
-# * A property value can span several lines if each line is terminated by a backslash (‘\’) character.
+# * A property value can span several lines if each line is terminated by a backslash ('\') character.
 #   For example:
 #
 # targetCities=\
@@ -378,8 +378,8 @@ elasticsearch_discovery_filter = {{ graylog_elasticsearch_discovery_filter }}
 # Frequency of the Elasticsearch node discovery.
 #
 # Default: 30s
-{% if graylog_ elasticsearch_discovery_frequency is defined %}
- elasticsearch_discovery_frequency = {{ graylog_ elasticsearch_discovery_frequency }}
+{% if graylog_elasticsearch_discovery_frequency is defined %}
+ elasticsearch_discovery_frequency = {{ graylog_elasticsearch_discovery_frequency }}
 {% else %}
 #  elasticsearch_discovery_frequency = 30s
 {% endif %}
