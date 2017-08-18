@@ -15,7 +15,7 @@
 
 - name: add graylog repository
   yum:
-    name: https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.rpm
+    name: "https://packages.graylog2.org/repo/packages/graylog-{{ graylog_version }}-repository_latest.rpm"
     state: present
 
 
