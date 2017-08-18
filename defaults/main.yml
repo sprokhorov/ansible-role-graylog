@@ -21,124 +21,124 @@ graylog_server_args: ""
 # Config
 password_secret: ""
 root_password_sha2: ""
-is_master: true
-node_id_file: /etc/graylog/server/node-id
-root_username:
-root_email:
-root_timezone:
-plugin_dir: plugin
-rest_listen_uri: http://127.0.0.1:9000/api/
-rest_transport_uri:
-rest_enable_cors:
-rest_enable_gzip:
-rest_enable_tls:
-rest_tls_cert_file:
-rest_tls_key_file:
-rest_tls_key_password:
-rest_max_header_size:
-rest_max_initial_line_length:
-rest_thread_pool_size:
-trusted_proxies:
-web_enable:
-web_listen_uri:
-web_enable_cors:
-web_enable_gzip:
-web_enable_tls:
-web_tls_cert_file:
-web_tls_key_file:
-web_tls_key_password:
-web_max_header_size:
-web_max_initial_line_length:
-web_thread_pool_size:
-elasticsearch_config_file:
-rotation_strategy: count
-elasticsearch_max_docs_per_index: 20000000
-elasticsearch_max_size_per_index:
-elasticsearch_max_time_per_index:
-elasticsearch_disable_version_check:
-no_retention:
-elasticsearch_max_number_of_indices: 20
-retention_strategy: delete
-elasticsearch_shards: 4
-elasticsearch_replicas: 0
-elasticsearch_index_prefix: graylog
-elasticsearch_template_name:
-allow_leading_wildcard_searches: false
-allow_highlighting: false
-elasticsearch_cluster_name:
-elasticsearch_node_name_prefix:
-elasticsearch_discovery_zen_ping_unicast_hosts:
-elasticsearch_discovery_zen_ping_unicast_hosts:
-elasticsearch_node_master:
-elasticsearch_node_data:
-elasticsearch_transport_tcp_port:
-elasticsearch_http_enabled:
-elasticsearch_cluster_discovery_timeout:
-elasticsearch_discovery_initial_state_timeout:
-elasticsearch_analyzer: standard
-elasticsearch_request_timeout:
-elasticsearch_index_optimization_timeout:
-elasticsearch_index_optimization_jobs:
-index_ranges_cleanup_interval:
-output_batch_size: 500
-output_flush_interval: 1
-output_fault_count_threshold: 5
-output_fault_penalty_seconds: 30
-processbuffer_processors: 5
-outputbuffer_processors: 3
-outputbuffer_processor_keep_alive_time:
-outputbuffer_processor_threads_core_pool_size:
-outputbuffer_processor_threads_max_pool_size:
-udp_recvbuffer_sizes:
-processor_wait_strategy: blocking
-ring_size: 65536
-inputbuffer_ring_size: 65536
-inputbuffer_processors: 2
-inputbuffer_wait_strategy: blocking
-message_journal_enabled: true
-message_journal_dir: /var/lib/graylog-server/journal
-message_journal_max_age:
-message_journal_max_size:
-message_journal_flush_age:
-message_journal_flush_interval:
-message_journal_segment_age:
-message_journal_segment_size:
-async_eventbus_processors:
-lb_recognition_period_seconds: 3
-lb_throttle_threshold_percentage:
-stream_processing_timeout:
-stream_processing_max_faults:
-alert_check_interval:
-output_module_timeout:
-stale_master_timeout:
-shutdown_timeout:
-mongodb_uri: mongodb://localhost/graylog
-mongodb_uri:
-mongodb_uri:
-mongodb_max_connections: 1000
-mongodb_threads_allowed_to_block_multiplier: 5
-rules_file:
-transport_email_enabled:
-transport_email_hostname:
-transport_email_port:
-transport_email_use_auth:
-transport_email_use_tls:
-transport_email_use_ssl:
-transport_email_auth_username:
-transport_email_auth_password:
-transport_email_subject_prefix:
-transport_email_from_email:
-transport_email_web_interface_url:
-http_connect_timeout:
-http_read_timeout:
-http_write_timeout:
-disable_index_optimization:
-index_optimization_max_num_segments:
-gc_warning_threshold:
-ldap_connection_timeout:
-disable_sigar:
-dashboard_widget_default_cache_time:
-content_packs_loader_enabled:
-content_packs_dir:
-content_packs_auto_load: grok-patterns.json
-proxied_requests_thread_pool_size: 3
+# is_master: true
+# node_id_file: /etc/graylog/server/node-id
+# root_username:
+# root_email:
+# root_timezone:
+# plugin_dir: plugin
+# rest_listen_uri: http://127.0.0.1:9000/api/
+# rest_transport_uri:
+# rest_enable_cors:
+# rest_enable_gzip:
+# rest_enable_tls:
+# rest_tls_cert_file:
+# rest_tls_key_file:
+# rest_tls_key_password:
+# rest_max_header_size:
+# rest_max_initial_line_length:
+# rest_thread_pool_size:
+# trusted_proxies:
+# web_enable:
+# web_listen_uri:
+# web_enable_cors:
+# web_enable_gzip:
+# web_enable_tls:
+# web_tls_cert_file:
+# web_tls_key_file:
+# web_tls_key_password:
+# web_max_header_size:
+# web_max_initial_line_length:
+# web_thread_pool_size:
+# elasticsearch_config_file:
+# rotation_strategy: count
+# elasticsearch_max_docs_per_index: 20000000
+# elasticsearch_max_size_per_index:
+# elasticsearch_max_time_per_index:
+# elasticsearch_disable_version_check:
+# no_retention:
+# elasticsearch_max_number_of_indices: 20
+# retention_strategy: delete
+# elasticsearch_shards: 4
+# elasticsearch_replicas: 0
+# elasticsearch_index_prefix: graylog
+# elasticsearch_template_name:
+# allow_leading_wildcard_searches: false
+# allow_highlighting: false
+# elasticsearch_cluster_name:
+# elasticsearch_node_name_prefix:
+# elasticsearch_discovery_zen_ping_unicast_hosts:
+# elasticsearch_discovery_zen_ping_unicast_hosts:
+# elasticsearch_node_master:
+# elasticsearch_node_data:
+# elasticsearch_transport_tcp_port:
+# elasticsearch_http_enabled:
+# elasticsearch_cluster_discovery_timeout:
+# elasticsearch_discovery_initial_state_timeout:
+# elasticsearch_analyzer: standard
+# elasticsearch_request_timeout:
+# elasticsearch_index_optimization_timeout:
+# elasticsearch_index_optimization_jobs:
+# index_ranges_cleanup_interval:
+# output_batch_size: 500
+# output_flush_interval: 1
+# output_fault_count_threshold: 5
+# output_fault_penalty_seconds: 30
+# processbuffer_processors: 5
+# outputbuffer_processors: 3
+# outputbuffer_processor_keep_alive_time:
+# outputbuffer_processor_threads_core_pool_size:
+# outputbuffer_processor_threads_max_pool_size:
+# udp_recvbuffer_sizes:
+# processor_wait_strategy: blocking
+# ring_size: 65536
+# inputbuffer_ring_size: 65536
+# inputbuffer_processors: 2
+# inputbuffer_wait_strategy: blocking
+# message_journal_enabled: true
+# message_journal_dir: /var/lib/graylog-server/journal
+# message_journal_max_age:
+# message_journal_max_size:
+# message_journal_flush_age:
+# message_journal_flush_interval:
+# message_journal_segment_age:
+# message_journal_segment_size:
+# async_eventbus_processors:
+# lb_recognition_period_seconds: 3
+# lb_throttle_threshold_percentage:
+# stream_processing_timeout:
+# stream_processing_max_faults:
+# alert_check_interval:
+# output_module_timeout:
+# stale_master_timeout:
+# shutdown_timeout:
+# mongodb_uri: mongodb://localhost/graylog
+# mongodb_uri:
+# mongodb_uri:
+# mongodb_max_connections: 1000
+# mongodb_threads_allowed_to_block_multiplier: 5
+# rules_file:
+# transport_email_enabled:
+# transport_email_hostname:
+# transport_email_port:
+# transport_email_use_auth:
+# transport_email_use_tls:
+# transport_email_use_ssl:
+# transport_email_auth_username:
+# transport_email_auth_password:
+# transport_email_subject_prefix:
+# transport_email_from_email:
+# transport_email_web_interface_url:
+# http_connect_timeout:
+# http_read_timeout:
+# http_write_timeout:
+# disable_index_optimization:
+# index_optimization_max_num_segments:
+# gc_warning_threshold:
+# ldap_connection_timeout:
+# disable_sigar:
+# dashboard_widget_default_cache_time:
+# content_packs_loader_enabled:
+# content_packs_dir:
+# content_packs_auto_load: grok-patterns.json
+# proxied_requests_thread_pool_size: 3
