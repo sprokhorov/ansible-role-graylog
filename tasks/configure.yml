@@ -68,7 +68,7 @@
 
 - name: create journal directory
   file:
-    dest: "{{ graylog_home_dir }}/journal"
+    dest: "{{ graylog_message_journal_dir }}"
     state: directory
     owner: graylog
     group: graylog
