@@ -18,13 +18,16 @@ graylog_redhat_packages:
 graylog_heap_size: 1g
 graylog_server_args: ""
 graylog_home_dir: /var/lib/graylog-server
+graylog_conf_dir: "/etc/graylog/{{ graylog_node_name }}"
+graylog_node_name: server
+# graylog_cluster_mode: no
 
 # Config
 graylog_password_secret: ""
 graylog_root_password_sha2: ""
-graylog_is_master: true
-graylog_node_id_file: /etc/graylog/server/node-id
-graylog_plugin_dir: plugin
+graylog_is_master: 'true'
+graylog_node_id_file: "/etc/graylog/{{ graylog_node_name }}/node-id"
+graylog_plugin_dir: /usr/share/graylog-server/plugin
 graylog_rest_listen_uri: http://127.0.0.1:9000/api/
 graylog_rotation_strategy: count
 graylog_elasticsearch_max_docs_per_index: 20000000
@@ -33,8 +36,8 @@ graylog_retention_strategy: delete
 graylog_elasticsearch_shards: 4
 graylog_elasticsearch_replicas: 0
 graylog_elasticsearch_index_prefix: graylog
-graylog_allow_leading_wildcard_searches: false
-graylog_allow_highlighting: false
+graylog_allow_leading_wildcard_searches: 'false'
+graylog_allow_highlighting: 'false'
 graylog_elasticsearch_analyzer: standard
 graylog_output_batch_size: 500
 graylog_output_flush_interval: 1
@@ -47,7 +50,7 @@ graylog_ring_size: 65536
 graylog_inputbuffer_ring_size: 65536
 graylog_inputbuffer_processors: 2
 graylog_inputbuffer_wait_strategy: blocking
-graylog_message_journal_enabled: true
+graylog_message_journal_enabled: 'true'
 graylog_message_journal_dir: "{{ graylog_home_dir }}/journal"
 graylog_lb_recognition_period_seconds: 3
 graylog_mongodb_uri: mongodb://localhost/graylog

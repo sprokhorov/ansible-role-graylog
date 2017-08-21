@@ -3,7 +3,7 @@
 
 - name: check required vars
   fail:
-    msg: "password_secret or/and root_password_sha2 is not defined"
+    msg: "graylog_password_secret or/and graylog_root_password_sha2 is not defined"
   when: not graylog_password_secret and not graylog_root_password_sha2
 
 
@@ -14,39 +14,76 @@
     enabled: yes
 
 
-- name: edit server.conf
+- name: create conf directory
+  file:
+    name: "{{ graylog_conf_dir }}"
+    state: directory
+
+
+- name: create configs
   template:
     backup: yes
-    src: server.conf.j2
-    dest: /etc/graylog/server/server.conf
-  register: config
+    src: "{{ item }}.j2"
+    dest: "{{ graylog_conf_dir }}/{{ item }}"
+  with_items:
+    - server.conf
+    - log4j2.xml
+  register: graylog_config_is
+
+
+- name: touch node-id file 
+  file:
+    name: "{{ graylog_node_id_file }}"
+    owner: graylog
+    group: graylog
+    state: touch
 
 
 - name: edit graylog-server default
   template:
     src: graylog-server.j2
-    dest: /etc/sysconfig/graylog-server
-  register: default
+    dest: "/etc/sysconfig/graylog-{{ graylog_node_name }}"
+  register: graylog_config_is
+
+
+- name: creat running script
+  template:
+    src: usr/share/graylog-server/bin/graylog-server.j2
+    dest: "/usr/share/graylog-server/bin/graylog-{{ graylog_node_name }}"
+    mode: 0755
+  register: graylog_config_is
+
+
+- name: creat systemd service
+  template:
+    src: usr/lib/systemd/system/graylog-server.service.j2
+    dest: "/usr/lib/systemd/system/graylog-{{ graylog_node_name }}.service"
+  register: systemd_config_is
+
+
+- name: systemctl daemon-reload
+  command: /bin/systemctl daemon-reload
+  when: systemd_config_is.changed
 
 
 - name: create journal directory
   file:
-    dest: /var/lib/graylog-server/journal
+    dest: "{{ graylog_home_dir }}/journal"
     state: directory
     owner: graylog
     group: graylog
 
-   
+
 - name: restart graylog server
   service:
-    name: graylog-server
+    name: "graylog-{{ graylog_node_name }}"
     state: restarted
     enabled: yes
-  when: config.changed or default.changed
+  when: graylog_config_is.changed
 
 
 - name: start graylog-server
   service:
-    name: graylog-server
+    name: "graylog-{{ graylog_node_name }}"
     state: started
     enabled: yes
